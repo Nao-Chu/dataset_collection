@@ -209,8 +209,8 @@ void Widget::on_startBt_clicked()
     }
 
     cap.open(ui->deviceComboBox->currentText().toInt());
-    cap.set(CV_CAP_PROP_FRAME_WIDTH, 1920);
-    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 1070);
+//    cap.set(CV_CAP_PROP_FRAME_WIDTH, 1920);
+//    cap.set(CV_CAP_PROP_FRAME_HEIGHT, 1070);
     timer->start(30);
 }
 

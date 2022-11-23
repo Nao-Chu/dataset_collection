@@ -27,11 +27,11 @@ HEADERS += \
 FORMS += \
     widget.ui
 
-LIBS += -LD:/opencv249/opencv/build/x64/vc12/lib/ -lopencv_core249 -lopencv_highgui249 -lopencv_video249 -lopencv_imgproc249
+LIBS += -L$$PWD/lib/ -lopencv_core249 -lopencv_highgui249 -lopencv_video249  -lopencv_imgproc249
 
-INCLUDEPATH += D:/opencv249/opencv/build/include
+INCLUDEPATH += include/
 
-DESTDIR = E:/share/cap
+DESTDIR = $$PWD/bin/
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
