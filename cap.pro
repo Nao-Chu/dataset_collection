@@ -16,11 +16,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    log.cpp \
     main.cpp \
     resizelabel.cpp \
     widget.cpp
 
 HEADERS += \
+    log.h \
     resizelabel.h \
     widget.h
 
@@ -31,7 +33,7 @@ LIBS += -L$$PWD/lib/ -lopencv_core249 -lopencv_highgui249 -lopencv_video249  -lo
 
 INCLUDEPATH += include/
 
-DESTDIR = $$PWD/bin/
+DESTDIR = E:/share/dataset_collection
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
