@@ -249,7 +249,9 @@ void Widget::on_changepathBt_clicked()
     fileDialog->setFileMode(QFileDialog::Directory);
     fileDialog->exec();
     auto path = fileDialog->selectedFiles();
-    ui->label_path->setText(path[0]);
+    if (path.size() > 0) {
+        ui->label_path->setText(path[0]);
+    }
 }
 
 void Widget::on_hmin_valueChanged(int value)
