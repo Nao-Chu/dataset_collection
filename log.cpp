@@ -73,7 +73,7 @@ QString getLogName()
     QStringList filters;
     filters << "*.log";
     dir.setNameFilters(filters);
-    dir.setSorting(QDir::Name);
+    dir.setSorting(QDir::Time);
 
     // 获取最后一个文件，判断文件大小
     QFileInfoList filelst = dir.entryInfoList();
@@ -84,8 +84,8 @@ QString getLogName()
         return QString("%1/%2.log").arg(DIR, DATE);
     }
 
-    // 获取最后一个文件
-    QString strFileName = filelst.at(count - 1).absoluteFilePath();
+    // 获取最新的文件
+    QString strFileName = filelst.at(0).absoluteFilePath();
     QFile logfile(strFileName);
     logfile.open(QIODevice::WriteOnly | QIODevice::Append);
 
@@ -98,12 +98,13 @@ QString getLogName()
     logfile.close();
 
     // 文件个数不多，无需删除
-    if (count < FILENUM){
+    if (count <= FILENUM){
         return strFileName;
     }
 
+    int delcount = filelst.count() - 1 - (count - FILENUM);
     // 删除多余文件
-    for (int i = 0; i < count - FILENUM; ++i) {
+    for (int i = filelst.count() - 1; i > delcount && i >= 0; --i) {
         QFileInfo mItem = filelst.at(i);
         QFile::remove(mItem.absoluteFilePath());
     }
